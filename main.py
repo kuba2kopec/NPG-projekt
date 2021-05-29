@@ -1,16 +1,29 @@
 contacts = []
 
+class Contact:
+  def __init__(self, name, lastname, mail, phone, address):
+    self.name = name
+    self.lastname = lastname
+    self.mail = mail
+    self.phone = phone
+    self.address = address
+
 while True:
-  m = int(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt"))
-  if m == 1:
+  m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\n"))
+  if m == "1":
     # dodanie kontaktu
-  elif m == 2:
+    pass
+  elif m == "2":
     # edycja kontaktu
-  elif m == 3:
+    pass
+  elif m == "3":
     # usuwanie kontaktu
-  elif m == 4:
+    pass
+  elif m == "4":
     # pokazanie listy
-  elif m == 5:
+    pass
+  elif m == "5":
     # wyszukanie kontaktu
+    pass
   else:
     print("niepoprawna opcja")
