@@ -7,23 +7,22 @@ class Contact:
     self.mail = mail
     self.phone = phone
     self.address = address
+
 def add():
-  found = 0
   numer = str(input("Podaj numer do którego chcesz przypisać kontakt: "))
   if len(numer) != 9:
-        found = 1
-        print("Numer nieprawidłowy!")
+    print("Numer nieprawidłowy!")
+    return
   for contact in contacts:
     if numer == contact.phone:
-      found = 1
       print("Taki kontakt już istnieje!")
-  if found == 0:
-    name = str(input("Podaj imie: "))
-    lastname = str(input("Podaj nazwisko: "))
-    mail = str(input("Podaj maila: "))
-    address = str(input("Podaj adres: "))
-    newcontact = Contact(name,lastname,mail,numer,address)
-    contacts.append(newcontact)
+      return
+  name = str(input("Podaj imie: "))
+  lastname = str(input("Podaj nazwisko: "))
+  mail = str(input("Podaj maila: "))
+  address = str(input("Podaj adres: "))
+  newcontact = Contact(name,lastname,mail,numer,address)
+  contacts.append(newcontact)
 
 while True:
   m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\n"))
