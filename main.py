@@ -8,6 +8,22 @@ class Contact:
     self.phone = phone
     self.address = address
 
+def add():
+  numer = str(input("Podaj numer do którego chcesz przypisać kontakt: "))
+  if len(numer) != 9:
+    print("Numer nieprawidłowy!")
+    return
+  for contact in contacts:
+    if numer == contact.phone:
+      print("Taki kontakt już istnieje!")
+      return
+  name = str(input("Podaj imie: "))
+  lastname = str(input("Podaj nazwisko: "))
+  mail = str(input("Podaj maila: "))
+  address = str(input("Podaj adres: "))
+  newcontact = Contact(name,lastname,mail,numer,address)
+  contacts.append(newcontact)
+
 def search () -> str:
   m = str(input("Wybierz jak chcesz wyszukać kontakt:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
   zmienna = ""
@@ -47,7 +63,7 @@ def search () -> str:
 while True:
   m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\n"))
   if m == "1":
-    # dodanie kontaktu
+    add()
     pass
   elif m == "2":
     # edycja kontaktu
