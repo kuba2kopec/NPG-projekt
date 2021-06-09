@@ -1,3 +1,6 @@
+import json
+from json.decoder import JSONDecodeError
+
 contacts = []
 
 class Contact:
@@ -7,6 +10,27 @@ class Contact:
     self.mail = mail
     self.phone = phone
     self.address = address
+  
+  def get_data(self):
+    return {
+      "name": self.name,
+      "lastname": self.lastname,
+      "mail": self.mail,
+      "phone": self.phone,
+      "address": self.address,
+    }
+
+try:
+  f = open("database.json", "r")
+  data = json.loads(f.read())
+  f.close()
+  for contact in data:
+    contacts.append(Contact(contact["name"], contact["lastname"], contact["mail"], contact["phone"], contact["address"]))
+except FileNotFoundError:
+  f = open("database.json", "x")
+  f.close()
+except JSONDecodeError:
+  pass
 
 def add():
   numer = str(input("Podaj numer do którego chcesz przypisać kontakt: "))
@@ -60,8 +84,16 @@ def search () -> str:
   if found == 0:
     print("Nie ma takiego kontaktu")
 
+def save_on_close():
+  data = []
+  for contact in contacts:
+    data.append(contact.get_data())
+  f = open("database.json", "w")
+  f.write(json.dumps(data))
+  f.close()
+
 while True:
-  m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\n"))
+  m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\nCokolwiek innego aby zakończyć działanie programu\n"))
   if m == "1":
     add()
     pass
@@ -78,4 +110,5 @@ while True:
     search()
     pass
   else:
-    print("niepoprawna opcja")
+    save_on_close()
+    break
