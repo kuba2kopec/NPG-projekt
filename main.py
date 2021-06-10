@@ -56,6 +56,13 @@ def remove():
       return
   print("Nie ma takiego kontaktu")
 
+def show_all():
+    l = 1    #licznik
+    print('(imie, nazwisko mail, nr tel, adres)\n')
+    for contact in contacts:
+        print(l, '. {contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address} \n'.format(contact=contact))
+        l=l+1
+
 def search () -> str:
   m = str(input("Wybierz jak chcesz wyszukać kontakt:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
   zmienna = ""
