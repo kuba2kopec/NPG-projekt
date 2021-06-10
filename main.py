@@ -70,6 +70,13 @@ def edit():
       return
   print ("Nie znaleziono takiego kontaktu")
 
+def remove():
+  numer = str(input("Podaj numer który chcesz usunąć: "))
+  for index,contact in enumerate(contacts):
+    if numer==contact.phone:
+      contacts.pop(index)
+      return
+  print("Nie ma takiego kontaktu")
 
 def search () -> str:
   m = str(input("Wybierz jak chcesz wyszukać kontakt:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
@@ -125,6 +132,7 @@ while True:
     # edycja kontaktu
     pass
   elif m == "3":
+    remove()
     # usuwanie kontaktu
     pass
   elif m == "4":
