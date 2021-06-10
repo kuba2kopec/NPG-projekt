@@ -20,6 +20,18 @@ class Contact:
       "address": self.address,
     }
 
+  def edit(self,property,value):
+    if property == "1":
+      self.name = value
+    elif property == "2":
+      self.lastname = value
+    elif property == "3":
+      self.mail = value
+    elif property == "4":
+      self.phone = value
+    elif property == "5":
+      self.address = value
+
 try:
   f = open("database.json", "r")
   data = json.loads(f.read())
@@ -47,6 +59,16 @@ def add():
   address = str(input("Podaj adres: "))
   newcontact = Contact(name,lastname,mail,numer,address)
   contacts.append(newcontact)
+
+def edit():
+  numer = str(input("Podaj numer który zamierzasz edytować:"))
+  for contact in contacts:
+    if numer == contact.phone:
+      m = str(input("Wybierz co chcesz edytować:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
+      x = str(input("Wybierz nową wartość"))
+      contact.edit(m,x)
+      return
+  print ("Nie znaleziono takiego kontaktu")
 
 def remove():
   numer = str(input("Podaj numer który chcesz usunąć: "))
@@ -106,6 +128,7 @@ while True:
     add()
     pass
   elif m == "2":
+    edit()
     # edycja kontaktu
     pass
   elif m == "3":
