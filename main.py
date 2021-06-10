@@ -80,18 +80,17 @@ def remove():
   print("Nie ma takiego kontaktu")
 
 def show_all():
-    l = 1    #licznik
-    print('(imie, nazwisko mail, nr tel, adres)\n')
-    for contact in contacts:
-        print(l, '. {contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address} \n'.format(contact=contact))
-        l=l+1
+  l = 1    #licznik
+  for contact in contacts:
+    print(l, '. Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address} \n'.format(contact=contact))
+    l=l+1
 
 
 def random_contact():
-  print('{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address} \n'.format(contact=random.choice(contacts)))
+  print('Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address} \n'.format(contact=random.choice(contacts)))
   
   
-def search () -> str:
+def search():
   m = str(input("Wybierz jak chcesz wyszukać kontakt:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
   zmienna = ""
   if m == "1":
@@ -111,19 +110,19 @@ def search () -> str:
   for contact in contacts:
     if m == "1" and zmienna == contact.name:
       found = 1
-      print('{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address}'.format(contact=contact))
+      print('Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address}'.format(contact=contact))
     elif m == "2" and zmienna == contact.lastname:
       found = 1
-      print( '{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address}'.format(contact=contact))
+      print( 'Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address}'.format(contact=contact))
     elif m == "3" and zmienna == contact.mail:
       found = 1
-      print( '{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address}'.format(contact=contact))
+      print( 'Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address}'.format(contact=contact))
     elif m == "4" and zmienna == contact.phone:
       found = 1
-      print('{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address}'.format(contact=contact))
+      print('Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address}'.format(contact=contact))
     elif m == "5" and zmienna == contact.address:
       found = 1
-      print('{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address}'.format(contact=contact))
+      print('Imie: {contact.name} Nazwisko: {contact.lastname} Mail: {contact.mail} Telefon: {contact.phone} Adres: {contact.address}'.format(contact=contact))
   if found == 0:
     print("Nie ma takiego kontaktu")
 
@@ -142,20 +141,18 @@ while True:
     pass
   elif m == "2":
     edit()
-    # edycja kontaktu
     pass
   elif m == "3":
     remove()
-    # usuwanie kontaktu
     pass
   elif m == "4":
-    show_all()  # pokazanie listy
+    show_all()
     pass
   elif m == "5":
     search()
     pass
-   elif m == "6":
-    random_contact()  # losowanie numeru
+  elif m == "6":
+    random_contact()
     pass
   else:
     save_on_close()
