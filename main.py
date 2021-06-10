@@ -120,7 +120,7 @@ while True:
     # usuwanie kontaktu
     pass
   elif m == "4":
-    # pokazanie listy
+    show_all()  # pokazanie listy
     pass
   elif m == "5":
     search()
