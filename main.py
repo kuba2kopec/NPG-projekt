@@ -1,3 +1,4 @@
+import random
 import json
 from json.decoder import JSONDecodeError
 
@@ -85,6 +86,11 @@ def show_all():
         print(l, '. {contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address} \n'.format(contact=contact))
         l=l+1
 
+
+def random_contact():
+  print('{contact.name} {contact.lastname} {contact.mail} {contact.phone} {contact.address} \n'.format(contact=random.choice(contacts)))
+  
+  
 def search () -> str:
   m = str(input("Wybierz jak chcesz wyszukać kontakt:\n1 - imie \n2 - nazwisko \n3 - mail \n4 - telefon \n5 - adres\n"))
   zmienna = ""
@@ -130,7 +136,7 @@ def save_on_close():
   f.close()
 
 while True:
-  m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\nCokolwiek innego aby zakończyć działanie programu\n"))
+  m = str(input("Wybierz funkcje:\n1 - dodaj nowy kontakt\n2 - edytuj kontakt\n3 - usun kontakt\n4 - pokaz wszystkie kontakty\n5 - wyszukaj kontakt\n6 - wylosuj numer \nCokolwiek innego aby zakończyć działanie programu\n"))
   if m == "1":
     add()
     pass
@@ -147,6 +153,9 @@ while True:
     pass
   elif m == "5":
     search()
+    pass
+   elif m == "6":
+    random_contact()  # losowanie numeru
     pass
   else:
     save_on_close()
